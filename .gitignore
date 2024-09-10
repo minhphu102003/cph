@@ -1,4 +1,4 @@
 *.inp
 *.out
 *.exe
-/.vscode
+.vscode
