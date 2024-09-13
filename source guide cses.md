@@ -1,0 +1,1 @@
+link : [https://github.com/mrsac7/CSES-Solutions/blob/master/src/2217%20-%20Collecting%20Numbers%20II.cpp#L21]
