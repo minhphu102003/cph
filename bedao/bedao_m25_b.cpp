@@ -15,8 +15,36 @@ ll gcd(ll a, ll b){
 }
 
 // Hàm tính Bội Chung Nhỏ Nhất (LCM)
-ll lcm(ll a, ll b){
-    return a / gcd(a, b) * b;
+ll lcm(ll a, ll b, ll N){
+    if(a == -1 || b == -1)
+        return -1;
+    ll c = gcd(a,b);
+    if(b/c > N/a)   return -1;
+    return a / c * b;
+}
+
+ll preResult (ll a, ll b){
+    if(b==-1){
+        return 0;
+    }
+    if(a%b != 0){
+        return 0;
+    }
+
+    ll ans = a/b;
+    ll res = 0;
+    for (ll  i = 1; i*i <= ans; i++)
+    {
+        if(ans%i == 0){
+            if(i*i == ans){
+                res++;
+            }
+            else{
+                res += 2;
+            }
+        }
+    }
+    return res;
 }
 
 void solve(){
@@ -24,28 +52,16 @@ void solve(){
     cin >> n >> a >> b >> c;
 
     // Tính BCNN của các cặp
-    ll lcm_ab = lcm(a, b);
-    ll lcm_ac = lcm(a, c);
-    ll lcm_bc = lcm(b, c);
+    ll lcm_ab = lcm(a, b, n);
+    ll lcm_ac = lcm(a, c, n);
+    ll lcm_bc = lcm(b, c, n);
+    ll lcm_abc = lcm(lcm_ab,c,n);
 
     // Đếm số lượng số chia hết cho ít nhất hai trong ba số
-    int result = 0;
+    ll result = 0;
     // Lặp qua tất cả các số từ 1 đến sqrt(n)
-    for (long long i = 1; i * i <= n; i++) {
-        if (n % i == 0) {
-            if(i%lcm_ab == 0 || i% lcm_ac ==0 || i%lcm_bc ==0 ){
-                result++;
-            }
-            if (i * i != n) {
-                long long div = n / i;
-                if (div % lcm_ab == 0 || div % lcm_ac == 0 || div % lcm_bc == 0) {
-                    result++;
-                }
-            } 
-        }
-    }
     
-
+    result = preResult(n,lcm_ab) + preResult(n,lcm_ac) + preResult(n,lcm_bc) - 2 * preResult(n,lcm_abc);
     // Xuất kết quả
     cout << result << endl;
 }
