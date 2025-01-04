@@ -95,7 +95,7 @@ signed main()
 #ifndef ONLINE_JUDGE
     freopen("input.txt", "r", stdin);
     freopen("output.txt", "tahn", stdout);
-#endif
+#endfi
     int t = 1;
     while (t--)
     {
