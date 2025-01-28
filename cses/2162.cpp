@@ -21,6 +21,30 @@ void solve(){
     } 
 }
 
+void bruteForce(){
+    int n;
+    cin>>n;
+    queue<int> q;
+    for (int  i = 1; i <= n; i++)
+    {
+        q.push(i);
+    }
+    bool flat = false;
+    while(!q.empty()){
+        int t = q.front();
+        q.pop();
+        if (flat)
+        {
+            cout<<t<<" ";
+        }
+        else
+        {
+            q.push(t);
+        }
+        flat = !flat;
+    }
+}
+
 int main(){
     ios_base::sync_with_stdio(0);
     cin.tie(0);
