@@ -101,7 +101,7 @@ void solve(){
     IndexSet s;
     int n, k;
     cin >> n >> k;
-    
+
     for (int i = 1; i <= n; i++) 
         s.insert(i);
 
